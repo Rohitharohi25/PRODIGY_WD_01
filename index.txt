@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0;
+            padding: 1em;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 1em;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            padding-top: 60px;
+        }
+
+        section {
+            padding: 2em;
+            height: 100vh;
+        }
+
+        .scrolled {
+            background-color: #222 !important;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <section id="home">
+            <h1>Home</h1>
+            <p>Welcome to the home page.</p>
+        </section>
+        <section id="about">
+            <h1>About</h1>
+            <p>About us section.</p>
+        </section>
+        <section id="services">
+            <h1>Services</h1>
+            <p>Our services section.</p>
+        </section>
+        <section id="contact">
+            <h1>Contact</h1>
+            <p>Contact us section.</p>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbar = document.getElementById("navbar");
+
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add("scrolled");
+                } else {
+                    navbar.classList.remove("scrolled");
+                }
+            });
+
+            const links = document.querySelectorAll("nav ul li a");
+
+            links.forEach(link => {
+                link.addEventListener("mouseover", function() {
+                    link.style.color = "yellow";
+                });
+
+                link.addEventListener("mouseout", function() {
+                    link.style.color = "white";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
